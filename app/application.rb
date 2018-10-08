@@ -12,7 +12,7 @@ class Application
       item_name = req.path.split("/items/").last 
       item = @@songs.find{|s| s.title == song_title}
       if item
-      resp.write song.artist
+        resp.write song.artist
     else
       resp.write "Route not found"
       resp.status = 404
