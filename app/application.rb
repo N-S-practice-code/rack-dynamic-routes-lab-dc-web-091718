@@ -9,12 +9,15 @@ class Application
  
     if req.path.match(/items/)
  
-      item_name = req.path.split("/songs/").last #turn /songs/Sorry into Sorry
+      item_name = req.path.split("/items/").last 
       item = @@songs.find{|s| s.title == song_title}
- 
+      if item
       resp.write song.artist
-    endv
- 
+    else
+      resp.write "Route not found"
+      resp.status = 404
+    end
+    
     resp.finish
   end
 end
