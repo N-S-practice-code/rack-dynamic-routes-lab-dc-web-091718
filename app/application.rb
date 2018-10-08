@@ -7,9 +7,13 @@ class Application
     resp = Rack::Response.new
     req = Rack::Request.new(env)
  
-    @@songs.each do |song|
-      resp.write "#{song.title}\n"
-    end
+    if req.path.match(/items/)
+ 
+      item_name = req.path.split("/songs/").last #turn /songs/Sorry into Sorry
+      item = @@songs.find{|s| s.title == song_title}
+ 
+      resp.write song.artist
+    endv
  
     resp.finish
   end
